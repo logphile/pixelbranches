@@ -1,6 +1,12 @@
-module.exports = async function (context) {
+module.exports = async function (context, req) {
   context.res = {
     status: 200,
-    body: { bench: { tools: ['watering-can', 'shears'] } }
+    headers: { 'Content-Type': 'application/json' },
+    body: {
+      bench: {
+        tools: ['watering-can', 'shears']
+      }
+    }
   }
 }
+
