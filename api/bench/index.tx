@@ -1,8 +1,0 @@
-import { Context, HttpRequest } from "@azure/functions"
-
-export default async function (context: Context) {
-  context.res = {
-    status: 200,
-    body: { bench: { tools: ["watering-can", "shears"] } }
-  }
-}
