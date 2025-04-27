@@ -1,10 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Tell Next.js to produce a static “out/” folder
+  // enable full static export
   output: 'export',
-  experimental: {
-    // Keep App Router enabled
-    appDir: true,
-  },
+
+  // (optional) ignore any lingering type errors so your Azure Functions TS doesn't block the build
+  typescript: {
+    ignoreBuildErrors: false
+  }
 }
+
 module.exports = nextConfig
