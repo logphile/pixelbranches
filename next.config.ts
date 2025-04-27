@@ -1,12 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // enable full static export
-  output: 'export',
-
-  // (optional) ignore any lingering type errors so your Azure Functions TS doesn't block the build
-  typescript: {
-    ignoreBuildErrors: false
-  }
+  output: 'export',  // triggers static HTML export on `next build`
+  // (no `next export` needed)
 }
 
 module.exports = nextConfig
