@@ -2,25 +2,15 @@ name: Azure Static Web Apps CI/CD
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
-    types:
-      - opened
-      - synchronize
-      - reopened
-      - closed
-    branches:
-      - main
+    types: [opened, synchronize, reopened, closed]
+    branches: [ main ]
 
 jobs:
-  build_and_deploy_job:
-    if: |
-      github.event_name == 'push' ||
-      (github.event_name == 'pull_request' && github.event.action != 'closed')
+  build_and_deploy:
     runs-on: ubuntu-latest
-    name: Build and Deploy Job
-
+    name: Build & Deploy
     steps:
       - uses: actions/checkout@v3
 
@@ -35,31 +25,27 @@ jobs:
       - name: Build application
         run: npm run build
 
-      - name: Build And Deploy
-        id: builddeploy
+      - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
         with:
-          # replace <YOUR_APP_NAME> with your Static Web App’s generated hostname
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_GENTLE_BUSH_03A5B0D0F }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: upload
-          app_location: "/"        # Location of your Next.js app (where package.json lives)
-          api_location: "api"      # Folder with your Azure Functions
-          output_location: "out"   # next export output folder
+          app_location: "/"         # your Next.js app lives here
+          api_location: "api"       # your Azure Functions folder
+          output_location: "out"    # static export dir
           app_build_command: "npm run build"
         env:
-          is_static_export: true   # tells Oryx to use the 'output: export' setting
+          is_static_export: true
 
-  close_pull_request_job:
-    if: |
-      github.event_name == 'pull_request' &&
-      github.event.action == 'closed'
+  close_pr:
+    if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
-    name: Close Pull Request Job
+    name: Close Pull Request
     steps:
-      - name: Close Pull Request
-        id: closepullrequest
-        uses: Azure/static-web-apps-deploy@v1
+      - uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_GENTLE_BUSH_03A5B0D0F }}
           action: close
+
+          
