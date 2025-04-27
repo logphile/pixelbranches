@@ -1,15 +1,14 @@
-import { AzureFunction, Context, HttpRequest } from '@azure/functions'
+import { Context, HttpRequest } from "@azure/functions"
 
-const seeds: AzureFunction = async function (context: Context, req: HttpRequest) {
+export default async function (context: Context) {
   context.res = {
     status: 200,
     body: {
-      seeds: [
-        { id: 'maple',   name: 'Maple Bonsai' },
-        { id: 'juniper', name: 'Juniper Bonsai' },
-        { id: 'pine',    name: 'Pine Bonsai' },
-      ],
-    },
+      leaderboard: [
+        { player: "Alice", score: 42 },
+        { player: "Bob",   score: 37 },
+        { player: "Carol", score: 31 },
+      ]
+    }
   }
 }
-export default seeds
