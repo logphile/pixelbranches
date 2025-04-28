@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import useSWR from 'swr'
 import { useRouter } from 'next/navigation'
 
@@ -21,7 +22,7 @@ export default function MainMenu() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-green-100 to-green-300">
-      <img
+      <Image
   src="/workbench-bonsai.png"
   alt="Modest Workbench with Bonsai Plant"
   width={256}
