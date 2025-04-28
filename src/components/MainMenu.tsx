@@ -21,6 +21,13 @@ export default function MainMenu() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-green-100 to-green-300">
+      <img
+  src="/workbench-bonsai.png"
+  alt="Modest Workbench with Bonsai Plant"
+  width={256}
+  height={256}
+  className="mb-8"
+/>
       <h1 className="text-6xl font-extrabold mb-12">Pixel Branches</h1>
       <div className="space-y-4">
         <button
