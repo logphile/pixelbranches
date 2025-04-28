@@ -35,8 +35,7 @@ jobs:
           api_location: "api"       # your functions folder
           output_location: ""       # default Next.js build output directory
           app_build_command: "npm run build"
-        env:
-          # is_static_export: true  # removed to allow SSR and API routes
+        
 
   close_pr:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
