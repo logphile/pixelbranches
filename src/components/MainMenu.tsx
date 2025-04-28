@@ -1,8 +1,10 @@
 'use client'
 
-import Image from 'next/image'
+'use client'
+
 import useSWR from 'swr'
 import { useRouter } from 'next/navigation'
+import BenchBonsai from './BenchBonsai'
 
 const fetcher = (url: string) => fetch(url).then(r => r.json())
 
@@ -21,27 +23,36 @@ export default function MainMenu() {
   const { bench } = data
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-green-100 to-green-300">
-      <Image
-  src="/workbench-bonsai.png"
-  alt="Modest Workbench with Bonsai Plant"
-  width={256}
-  height={256}
-  className="mb-8"
-/>
-      <h1 className="text-6xl font-extrabold mb-12">Pixel Branches</h1>
-      <div className="space-y-4">
+    <div className="flex flex-col items-center justify-center min-h-screen" style={{ paddingTop: '5rem', background: '#5C7285' }}>
+      <BenchBonsai />
+      <h1 className="text-6xl font-extrabold mb-12" style={{ marginTop: '1rem', color: '#2F3E46' }}>Pixel Branches</h1>
+      <div className="flex flex-col space-y-4 w-64">
         <button
-          onClick={() => router.push('/game')}
-          className="px-8 py-3 bg-green-700 text-white rounded-lg shadow hover:bg-green-800"
+          onClick={() => router.push('/register')}
+          className="px-8 py-3 rounded-lg"
+          style={{ backgroundColor: '#9BEC00', color: '#2F3E46', boxShadow: '0 4px 8px rgba(0,0,0,0.2)', transition: 'transform 0.2s ease' }}
+          onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.05)')}
+          onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
         >
           Start New Game
+        </button>
+
+        <button
+          className="px-8 py-3 rounded-lg"
+          style={{ backgroundColor: '#06D001', color: '#2F3E46', boxShadow: '0 4px 8px rgba(0,0,0,0.2)', transition: 'transform 0.2s ease' }}
+          onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.05)')}
+          onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
+        >
+          Continue
         </button>
 
         {bench.plantedSeed && (
           <button
             onClick={() => router.push('/game')}
-            className="px-8 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700"
+          className="px-8 py-3 rounded-lg"
+          style={{ backgroundColor: '#06D001', color: '#2F3E46', boxShadow: '0 4px 8px rgba(0,0,0,0.2)', transition: 'transform 0.2s ease' }}
+          onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.05)')}
+          onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
           >
             Continue
           </button>
@@ -49,7 +60,10 @@ export default function MainMenu() {
 
         <button
           onClick={() => router.push('/leaderboard')}
-          className="px-8 py-3 bg-gray-700 text-white rounded-lg shadow hover:bg-gray-800"
+          className="px-8 py-3 rounded-lg"
+          style={{ backgroundColor: '#059212', color: '#2F3E46', boxShadow: '0 4px 8px rgba(0,0,0,0.2)', transition: 'transform 0.2s ease' }}
+          onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.05)')}
+          onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
         >
           Leaderboard
         </button>
