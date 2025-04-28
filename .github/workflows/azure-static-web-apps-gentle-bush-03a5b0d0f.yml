@@ -33,9 +33,9 @@ jobs:
           action: upload
           app_location: "/"         # root of your Next.js app
           api_location: "api"       # your functions folder
-          output_location: "out"       # default Next.js build output directory
+          output_location: ""       # default Next.js build output directory
           app_build_command: "npm run build"
-        
+
 
   close_pr:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
