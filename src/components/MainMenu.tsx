@@ -4,6 +4,16 @@ import { useState, useEffect } from 'react'
 import useSWR from 'swr'
 import { useRouter } from 'next/navigation'
 import ProceduralPixelatedBonsai from './ProceduralPixelatedBonsai'
+import Image from 'next/image'
+// Remove import, no need to import directly from public in Next.js
+// import MainMenuBonsai12 from '../public/MainMenuBonsai12.png'
+
+<Image
+  src="/MainMenuBonsai12.png" 
+  alt="Main Menu Bonsai"
+  width={280}  // Adjust dimensions as needed
+  height={280}
+/>
 
 const fetcher = (url: string) => fetch(url).then(r => r.json())
 
@@ -38,7 +48,7 @@ export default function MainMenu() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen" style={{ paddingTop: '5rem', background: '#5C7285' }}>
-      <ProceduralPixelatedBonsai />
+      <Image src={MainMenuBonsai12} alt="Main Menu Bonsai" width={256} height={256} />
       <h1 className="text-6xl font-extrabold mb-12" style={{ marginTop: '1rem', color: '#2F3E46' }}>Pixel Branches</h1>
       <div className="flex flex-col space-y-4 w-64">
         <button
